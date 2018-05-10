@@ -20,7 +20,8 @@ de <linux/string.h>
 ```
 
 ## Example generation for random seed 
-'''
+```
+
 static void pipe_lock(struct pipe_inode_info *pipe)
 {
 	struct pipe_inodeinfo *ipimap = null;
@@ -163,15 +164,17 @@ static void pipe_lock(struct pipe_inode_info *pipe)
 	}
 	return 0;
 }
-'''
+
+```
+
 ## Resources
 
 * [karpathy blog post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
-* [colah blog post on lstm](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+* [colah blog post on LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 * [R2RT blog post](https://r2rt.com/recurrent-neural-networks-in-tensorflow-i.html)
 * [R2RT blog post](https://r2rt.com/recurrent-neural-networks-in-tensorflow-ii.html)
 * [R2RT blog post on RNNs](https://r2rt.com/written-memories-understanding-deriving-and-extending-the-lstm.html)
-* [martin RNN (repo + video)](https://github.com/martin-gorner/tensorflow-rnn-shakespeare)
+* [martin-RNN (repo + video)](https://github.com/martin-gorner/tensorflow-rnn-shakespeare)
 
 
 
