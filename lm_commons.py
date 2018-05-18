@@ -3,10 +3,11 @@ import glob
 
 import numpy as np
 
-from zipFileHelperClassHelper import ZipFile
+from zipFileHelperClass import ZipFile
 
 # # time tracking
 minute = 60
+
 
 def negativeLogProb(predictions, labels):  # [batch_size*seq_length , vocabulary] as labels [batch_size*seq_length]
     """Log-probability of the true labels in a predicted batch."""
@@ -44,7 +45,8 @@ def minibatch_generator(data, nb_epochs, gen_batch_size, gen_seq_len):
         for step in range(steps_per_epoch):
             x = xdata[:, step * gen_seq_len:(step + 1) * gen_seq_len]
             y = ydata[:, step * gen_seq_len:(step + 1) * gen_seq_len]
-            # this will circulate DOWN for epoch > 0
+
+            # this will circulate shift UP for epoch > 0
             x = np.roll(x, -epoch, axis=0)  # to continue continue continue the text from epoch to epoch (do not reset rnn state! except the last bottom sample)
             y = np.roll(y, -epoch, axis=0)
 
@@ -91,8 +93,8 @@ def build_char_dataset(corpus):
     '''
     count = collections.Counter(corpus).items()
     _dictionary = dict()  # map common words to >> number according to frequency 0 for UNK 1 for THE
-    for word, _ in count:
-        _dictionary[word] = len(_dictionary)
+    for char, _ in count:
+        _dictionary[char] = len(_dictionary)
 
     data = list(map(lambda _word: _dictionary[_word], corpus))  # same as words list but of numbers corresponding to each word
     _reverse_dictionary = dict(zip(_dictionary.values(), _dictionary.keys()))
@@ -140,7 +142,7 @@ def sample_from_probabilities(probabilities, topn, vocabulary_size, is_word_leve
         :param topn: the number of highest probabilities to consider. Defaults to all of them.
         :return: a random integer
         """
-    probabilities = probabilities[-1, :]
+    probabilities = probabilities[-1, :]  # take the last in sequence : works if sample char by char or (even sequence)
 
     p = np.squeeze(probabilities)
     p[np.argsort(p)[:-topn]] = 0  # leave only the topn , zero otherwise

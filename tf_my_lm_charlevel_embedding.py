@@ -9,7 +9,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.contrib import rnn  # rnn stuff temporarily in contrib, moving back to code in TF 1.1
 
-from NMT_commons import read_data_files_as_chars, convert_to_one_line, build_char_dataset, minibatch_generator, negativeLogProb, perplexity, make_zip_results, sample_from_probabilities, minute
+from lm_commons import read_data_files_as_chars, convert_to_one_line, build_char_dataset, minibatch_generator, negativeLogProb, perplexity, make_zip_results, sample_from_probabilities, minute
 
 tf.set_random_seed(0)
 outputFileName = 'linux_embedding.log'

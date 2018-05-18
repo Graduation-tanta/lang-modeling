@@ -9,7 +9,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.contrib import rnn  # rnn stuff temporarily in contrib, moving back to code in TF 1.1
 
-from NMT_commons import read_data_files_as_words, build_word_dataset, minibatch_generator, negativeLogProb, perplexity, sample_from_probabilities, make_zip_results, minute
+from lm_commons import read_data_files_as_words, build_word_dataset, minibatch_generator, negativeLogProb, perplexity, sample_from_probabilities, make_zip_results, minute
 
 outputFileName = 'wordlevel.log'
 

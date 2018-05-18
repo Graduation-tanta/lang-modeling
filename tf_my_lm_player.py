@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 import tensorflow as tf
 
-from NMT_commons import sample_from_probabilities
+from lm_commons import sample_from_probabilities
 
 model = 5
 rand_init = False
